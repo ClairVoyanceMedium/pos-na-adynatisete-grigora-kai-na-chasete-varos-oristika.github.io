@@ -1,42 +1,261 @@
-# Indique aux robots que toutes les pages peuvent être explorées, sauf restrictions spécifiées
+# robots.txt v3.5 - 2025-05-28
+# Βελτιστοποιημένο για https://clairvoyancemedium.github.io/pos-na-adynatisete-grigora-kai-na-chasete-varos-oristika.github.io/
+# Στόχοι: Παγκόσμιο SEO, υψηλής συχνότητας crawling, υποστήριξη AI/φωνητικών βοηθών/κοινωνικών δικτύων, πολυγλωσσικό, μέγιστη προστασία
+
 User-agent: *
-Disallow: /admin/
-Disallow: /tmp/
-Disallow: /private/
-
-# Bloquer des URL avec paramètres inutiles pour l'indexation
-Disallow: /*?debug=true
-Disallow: /*?preview=true
-
-# Permettre les fichiers nécessaires au bon affichage et fonctionnement
-Allow: /css/
-Allow: /js/
+Allow: /
+Allow: /[a-z]{2}/
+Allow: /terms/
+Allow: /fonts/
 Allow: /images/
+Allow: /js/
+Allow: /css/
+Allow: /*.webp$
+Allow: /*.jpg$
+Allow: /*.png$
+Allow: /*.gif$
+Allow: /*.js$
+Allow: /*.css$
+Disallow: /csp-report-endpoint/
+Disallow: /contact/
+Disallow: /privacy/
+Disallow: /checkout/
+Disallow: /search/
+Disallow: /api/
+Disallow: /test/
+Disallow: /staging/
+Clean-param: utm_source&utm_medium&utm_campaign&lang&session_id
 
-# Référencement des ressources multimédias
-Allow: *.png
-Allow: *.jpg
-Allow: *.webp
-Allow: *.css
-Allow: *.js
-
-# Fournir le chemin du fichier sitemap pour une meilleure indexation
-Sitemap: https://www.clairvoyancemedium.com/sitemap.xml
-
-# Autorisation pour les robots Google et Bing pour maximiser les campagnes publicitaires
 User-agent: Googlebot
+Crawl-delay: 1
+Allow: /blog/
+Allow: /article/
+Clean-param: utm_source&utm_medium&utm_campaign&lang
+Disallow: /csp-report-endpoint/
+Disallow: /contact/
+Disallow: /privacy/
+Disallow: /checkout/
+
+User-agent: Googlebot-Image
+Allow: /images/
+Allow: /*.webp$
+Allow: /*.jpg$
+Allow: /*.png$
+Allow: /*.gif$
+Disallow: /favicon_optimized.webp
+
+User-agent: Googlebot-Video
+Crawl-delay: 1
 Allow: /
-User-agent: AdsBot-Google
-Allow: /
+Allow: /[a-z]{2}/
+Disallow: /csp-report-endpoint/
+Disallow: /contact/
+Disallow: /privacy/
+Disallow: /checkout/
+
 User-agent: Bingbot
+Crawl-delay: 2
+Allow: /blog/
+Allow: /article/
+Clean-param: utm_source&utm_medium&utm_campaign&lang
+Disallow: /csp-report-endpoint/
+Disallow: /contact/
+Disallow: /privacy/
+Disallow: /checkout/
+
+User-agent: Yandex
+Crawl-delay: 3
+Allow: /blog/
+Allow: /article/
+Clean-param: utm_source&utm_medium&utm_campaign&lang&session_id
+Disallow: /csp-report-endpoint/
+Disallow: /contact/
+Disallow: /privacy/
+Disallow: /checkout/
+
+User-agent: Baiduspider
+Crawl-delay: 3
+Allow: /zh/
+Allow: /blog/
+Allow: /article/
+Clean-param: lang
+Disallow: /csp-report-endpoint/
+Disallow: /contact/
+Disallow: /privacy/
+Disallow: /checkout/
+Disallow: /api/
+Disallow: /test/
+Disallow: /staging/
+
+User-agent: Sogou
+Crawl-delay: 4
+Allow: /zh/
+Allow: /blog/
+Allow: /article/
+Clean-param: lang
+Disallow: /csp-report-endpoint/
+Disallow: /contact/
+Disallow: /privacy/
+Disallow: /checkout/
+Disallow: /api/
+Disallow: /test/
+Disallow: /staging/
+
+User-agent: Applebot
+Crawl-delay: 2
+Allow: /blog/
+Allow: /article/
+Clean-param: utm_source&utm_medium&utm_campaign&lang
+Disallow: /csp-report-endpoint/
+Disallow: /contact/
+Disallow: /privacy/
+Disallow: /checkout/
+
+User-agent: Amazonbot
+Crawl-delay: 3
+Allow: /blog/
+Allow: /article/
+Clean-param: utm_source&utm_medium&utm_campaign&lang
+Disallow: /csp-report-endpoint/
+Disallow: /contact/
+Disallow: /privacy/
+Disallow: /checkout/
+
+User-agent: Naverbot
+Crawl-delay: 3
+Allow: /ja/
+Allow: /ko/
+Allow: /blog/
+Allow: /article/
+Clean-param: lang
+Disallow: /csp-report-endpoint/
+Disallow: /contact/
+Disallow: /privacy/
+Disallow: /checkout/
+
+User-agent: SeznamBot
+Crawl-delay: 3
+Allow: /cs/
+Allow: /blog/
+Allow: /article/
+Clean-param: lang
+Disallow: /csp-report-endpoint/
+Disallow: /contact/
+Disallow: /privacy/
+Disallow: /checkout/
+
+User-agent: Qwantify
+Crawl-delay: 4
+Allow: /fr/
+Allow: /blog/
+Allow: /article/
+Clean-param: lang
+Disallow: /csp-report-endpoint/
+Disallow: /contact/
+Disallow: /privacy/
+Disallow: /checkout/
+
+User-agent: DuckDuckGoBot
+Crawl-delay: 2
 Allow: /
+Allow: /[a-z]{2}/
+Allow: /blog/
+Allow: /article/
+Clean-param: utm_source&utm_medium&utm_campaign&lang
+Disallow: /csp-report-endpoint/
+Disallow: /contact/
+Disallow: /privacy/
+Disallow: /checkout/
 
-# Bloquer les robots nuisibles ou non désirés
-User-agent: BadBot
-Disallow: /
-User-agent: EvilScraper
+User-agent: JioSphere
+Crawl-delay: 3
+Allow: /hi/
+Allow: /blog/
+Allow: /article/
+Clean-param: lang
+Disallow: /csp-report-endpoint/
+Disallow: /contact/
+Disallow: /privacy/
+Disallow: /checkout/
+
+User-agent: Grok
+User-agent: ChatGPT-User
+User-agent: GPTBot
+User-agent: openai-crawler
+User-agent: ClaudeBot
+User-agent: anthropic-ai
+User-agent: cohere-ai
+User-agent: PerplexityBot
+User-agent: CCBot
+User-agent: youbot
+User-agent: phindbot
+User-agent: GeminiBot
+Crawl-delay: 4
+Allow: /
+Allow: /[a-z]{2}/
+Allow: /blog/
+Allow: /article/
+Allow: /images/
+Allow: /*.webp$
+Allow: /*.jpg$
+Allow: /*.png$
+Allow: /*.gif$
+Clean-param: utm_source&utm_medium&utm_campaign&lang
+Disallow: /csp-report-endpoint/
+Disallow: /contact/
+Disallow: /privacy/
+Disallow: /checkout/
+Disallow: /api/
+Disallow: /test/
+Disallow: /staging/
+
+User-agent: FacebookBot
+User-agent: Twitterbot
+User-agent: redditbot
+User-agent: TikTokBot
+Crawl-delay: 2
+Allow: /
+Allow: /[a-z]{2}/
+Allow: /blog/
+Allow: /article/
+Allow: /images/
+Allow: /*.webp$
+Allow: /*.jpg$
+Allow: /*.png$
+Allow: /*.gif$
+Clean-param: utm_source&utm_medium&utm_campaign&lang
+Disallow: /csp-report-endpoint/
+Disallow: /contact/
+Disallow: /privacy/
+Disallow: /checkout/
+
+User-agent: MJ12bot
+User-agent: AhrefsBot
+User-agent: PetalBot
+User-agent: DotBot
 Disallow: /
 
-# Empêcher l'exploration des fichiers sensibles
-Disallow: /config/
-Disallow: /backup/
+User-agent: SemrushBot
+Crawl-delay: 5
+Allow: /
+Allow: /[a-z]{2}/
+Allow: /blog/
+Allow: /article/
+Allow: /images/
+Allow: /*.webp$
+Allow: /*.jpg$
+Allow: /*.png$
+Allow: /*.gif$
+Clean-param: utm_source&utm_medium&utm_campaign&lang
+Disallow: /csp-report-endpoint/
+Disallow: /contact/
+Disallow: /privacy/
+Disallow: /checkout/
+
+User-agent: *
+Disallow: /
+
+Crawl-delay: 1
+Request-rate: 1/4
+
+Sitemap: https://clairvoyancemedium.github.io/pos-na-adynatisete-grigora-kai-na-chasete-varos-oristika.github.io/sitemap-index.xml
