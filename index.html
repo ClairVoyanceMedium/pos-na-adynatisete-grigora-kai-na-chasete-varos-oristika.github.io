@@ -1889,4 +1889,341 @@
 }
 </script>
 
+<div class="cta-buttons-container">
+    <a href="https://buy.stripe.com/5kA6oMfzK9D15KE6pL" target="_blank" rel="noopener nofollow" class="cta-button" data-tracking-label="PopupVictory" aria-label="Παραγγείλετε τα καψάκια Victory από το pop-up">
+        <span style="color:#000; text-shadow:0 0 5px rgba(255,255,255,0.8), 0 0 10px rgba(255,255,255,0.6), 0 0 15px rgba(255,255,255,0.4); animation:neon-flicker 1.5s infinite alternate;">Παραγγείλετε τώρα τα καψάκια γρήγορης απώλειας βάρους "Victory"</span>
+    </a>
+    <a href="https://buy.stripe.com/14kdRe0EQ4iH1uoaFa" target="_blank" rel="noopener nofollow" class="cta-button" data-tracking-label="PopupVictory" aria-label="Παραγγείλετε μαντεία μέσω email 6€ από το pop-up">
+        <span style="color:#000; text-shadow:0 0 5px rgba(255,255,255,0.8), 0 0 10px rgba(255,255,255,0.6), 0 0 15px rgba(255,255,255,0.4); animation:neon-flicker 1.5s infinite alternate;">Μαντεία για 1 ερώτηση μέσω email - 6,00€</span>
+    </a>
+    <button class="popup-close-button" id="closePopup" aria-label="Κλείστε το pop-up">Κλείσιμο</button>
+</div>
+</div>
+
+<!-- Footer -->
+<footer role="contentinfo">
+    <p>©<span id="footer-year"></span> ClairvoyanceMedium.com – Με την επιφύλαξη παντός δικαιώματος - Δωρεάν και παγκόσμια αποστολή σε 48 ώρες - Ασφαλής πληρωμή</p>
+    <p>Καμία αναφορά στην "μαντεία" ή στην "απώλεια βάρους" στον τραπεζικό σας λογαριασμό. Εγγυημένη διακριτικότητα.</p>
+    <p>
+        <a href="mailto:contact.clairvoyancemedium@gmail.com?subject=Αίτημα πληροφοριών" rel="noopener" onclick="gtag('event', 'footer_link_click', { 'link_name': 'contact' });" aria-label="Επικοινωνήστε με την υποστήριξη πελατών μέσω email">Επικοινωνία</a> | 
+        <a href="https://www.clairvoyancemedium.com/Conditions-Generales-des-Ventes-et-d-Utilisation-ccsaaaaaa.asp" target="_blank" rel="noopener" onclick="gtag('event', 'footer_link_click', { 'link_name': 'cgv' });" aria-label="Δείτε τους γενικούς όρους πώλησης και χρήσης">Γενικοί όροι πώλησης</a> | 
+    </p>
+</footer>
+
+</script nonce="xai-ultra2025">
+
+<!-- Scripts JavaScript -->
+<script nonce="xai-ultra2025">
+    // Διαχείριση δυναμικού έτους
+    const currentYear = new Date().getFullYear();
+    document.querySelectorAll('#header-year, #header-title-year, #hero-year, #urgency-year, #minceur-urgency-year, #programme-urgency-year, #spiritual-urgency-year, #footer-year').forEach(el => el.textContent = currentYear);
+
+    // Διαχείριση pop-up κατά της εγκατάλειψης (όλες οι συσκευές, κάθε επίσκεψη, 12s αρχικά, επανεμφάνιση κάθε 90s)
+    const youtubePopup = document.getElementById('youtubePopup');
+    const closePopup = document.getElementById('closePopup');
+
+    function showPopup() {
+        setTimeout(() => {
+            // Απόκρυψη του pop-up κατά της εγκατάλειψης για να αποφευχθούν συγκρούσεις
+            document.querySelector('.exit-intent-popup')?.classList.remove('active');
+            youtubePopup.classList.add('active');
+            youtubePopup.setAttribute('aria-hidden', 'false');
+            document.getElementById('youtube-popup-heading').focus();
+        }, 12000);
+    }
+
+    closePopup.addEventListener('click', () => {
+        youtubePopup.classList.remove('active');
+        youtubePopup.setAttribute('aria-hidden', 'true');
+        // Επανεμφάνιση μετά από 90 δευτερόλεπτα
+        setTimeout(showPopup, 140000);
+    });
+
+    // Κλείσιμο με πλήκτρο Escape
+    youtubePopup.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            youtubePopup.classList.remove('active');
+            youtubePopup.setAttribute('aria-hidden', 'true');
+            setTimeout(showPopup, 140000);
+        }
+    });
+
+    window.addEventListener('load', showPopup);
+
+    // Διαχείριση καρουsel
+    const carousels = document.querySelectorAll('.carousel');
+    carousels.forEach(carousel => {
+        const inner = carousel.querySelector('.carousel-inner');
+        const items = carousel.querySelectorAll('.carousel-item');
+        const prevBtn = carousel.querySelector('.carousel-prev');
+        const nextBtn = carousel.querySelector('.carousel-next');
+        let currentIndex = 0;
+
+        function updateCarousel() {
+            items.forEach((item, index) => {
+                item.classList.toggle('active', index === currentIndex);
+                item.setAttribute('aria-hidden', index !== currentIndex);
+            });
+            prevBtn.disabled = currentIndex === 0;
+            nextBtn.disabled = currentIndex === items.length - 1;
+        }
+
+        prevBtn.addEventListener('click', () => {
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateCarousel();
+            }
+        });
+
+        nextBtn.addEventListener('click', () => {
+            if (currentIndex < items.length - 1) {
+                currentIndex++;
+                updateCarousel();
+            }
+        });
+
+        updateCarousel();
+    });
+
+    // Διαχείριση κουμπιών "Διαβάστε περισσότερα"
+    const readMoreButtons = document.querySelectorAll('.read-more-btn');
+    readMoreButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const content = btn.nextElementSibling;
+            content.style.display = content.style.display === 'block' ? 'none' : 'block';
+            btn.textContent = content.style.display === 'block' ? 'Σύμπτυξη' : 'Διαβάστε περισσότερα';
+        });
+    });
+
+    // Διαχείριση αριθμομηχανής ΔΜΣ
+    const imcForm = document.getElementById('imc-form');
+    const heightInput = document.getElementById('height');
+    const weightInput = document.getElementById('weight');
+    const imcRecommendation = document.getElementById('imc-recommendation');
+    const imcChart = document.getElementById('imc-chart').getContext('2d');
+    let chartInstance = null;
+
+    function validateInput(input, min, max, errorElement) {
+        const value = parseFloat(input.value);
+        if (isNaN(value) || value < min || value > max) {
+            errorElement.style.display = 'block';
+            return false;
+        }
+        errorElement.style.display = 'none';
+        return true;
+    }
+
+    imcForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const heightValid = validateInput(heightInput, 100, 250, document.getElementById('height-error'));
+        const weightValid = validateInput(weightInput, 30, 300, document.getElementById('weight-error'));
+
+        if (heightValid && weightValid) {
+            const height = parseFloat(heightInput.value) / 100;
+            const weight = parseFloat(weightInput.value);
+            const imc = (weight / (height * height)).toFixed(1);
+
+            let category, recommendation, posology;
+            if (imc < 18.5) {
+                category = 'Ελλιποβαρής';
+                recommendation = 'Ο ΔΜΣ σας δείχνει ελλιποβαρή. Συμβουλευτείτε έναν ειδικό για ένα προσαρμοσμένο πρόγραμμα.';
+                posology = '';
+            } else if (imc < 25) {
+                category = 'Φυσιολογικό βάρος';
+                recommendation = 'Ο ΔΜΣ σας είναι ιδανικός. Διατηρήστε το βάρος σας με μια ισορροπημένη διατροφή σε συνδυασμό με 4 καψάκια Victory για τις ημέρες "απολαύσεων". 2 το πρωί/βράδυ.';
+                posology = '';
+            } else if (imc < 30) {
+                category = 'Υπέρβαρος';
+                recommendation = 'Είστε υπέρβαροι. Δοκιμάστε τα <a href="#minceur">καψάκια Victory</a> για μια φυσική και γρήγορη απώλεια βάρους.';
+                posology = 'Posology: 2 καψάκια Victory την ημέρα (πρωί/μεσημέρι/βράδυ) με ένα ποτήρι νερό. Δηλαδή 6 την ημέρα, για 3 μήνες για να ανακτήσετε ένα τέλεια λεπτό σώμα.';
+            } else {
+                category = 'Παχυσαρκία';
+                recommendation = 'Ο ΔΜΣ σας δείχνει παχυσαρκία. Το <a href="#programme-personnalise">προσαρμοσμένο πρόγραμμα Victory</a> είναι ιδανικό για εσάς σε συνδυασμό με τα καψάκια απώλειας βάρους Victory';
+                posology = 'Posology: 2 καψάκια Victory την ημέρα σε κάθε γεύμα, σε συνδυασμό με το προσαρμοσμένο πρόγραμμα Victory. Δηλαδή 6 καψάκια την ημέρα, για 4 μήνες για να επιστρέψετε στο ιδανικό σας βάρος.';
+            }
+
+            imcRecommendation.innerHTML = `
+                <p>Ο ΔΜΣ σας: <strong>${imc}</strong> (${category})</p>
+                <p>${recommendation}</p>
+                <p>${posology}</p>
+            `;
+
+            if (chartInstance) chartInstance.destroy();
+            chartInstance = new Chart(imcChart, {
+                type: 'bar',
+                data: {
+                    labels: ['Ο ΔΜΣ σας', 'Κανονικός ΔΜΣ'],
+                    datasets: [{
+                        label: 'ΔΜΣ',
+                        data: [imc, 22],
+                        backgroundColor: ['#FF69B4', '#87CEEB'],
+                        borderColor: ['#fff', '#fff'],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: { beginAtZero: true, max: 40 },
+                        x: { ticks: { color: '#fff' } }
+                    },
+                    plugins: { legend: { labels: { color: '#fff' } } }
+                }
+            });
+        }
+    });
+
+    // Διαχείριση κουμπιών ήχου
+    const audioButtons = document.querySelectorAll('.audio-button');
+    let currentUtterance = null;
+
+    audioButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const textIds = button.dataset.textId.split(',');
+            const texts = textIds.map(id => {
+                const elements = document.querySelectorAll(`#${id},.${id},[id*="${id}"]`);
+                return Array.from(elements).map(el => el.textContent.trim()).join(' ');
+            }).join(' ');
+
+            if (button.classList.contains('play-button')) {
+                if (currentUtterance) {
+                    speechSynthesis.cancel();
+                }
+                currentUtterance = new SpeechSynthesisUtterance(texts);
+                currentUtterance.lang = 'el-GR';
+                currentUtterance.rate = 1;
+                currentUtterance.pitch = 1;
+                speechSynthesis.speak(currentUtterance);
+
+                button.style.display = 'none';
+                button.nextElementSibling.style.display = 'inline-flex';
+                button.nextElementSibling.classList.add('playing');
+            } else {
+                speechSynthesis.cancel();
+                button.style.display = 'none';
+                button.previousElementSibling.style.display = 'inline-flex';
+                button.classList.remove('playing');
+            }
+        });
+    });
+
+    // Διαχείριση κουμπιού σίγασης για το βίντεο
+    const muteToggle = document.querySelector('.mute-toggle');
+    const videoIframe = document.querySelector('.video-container iframe');
+    muteToggle.addEventListener('click', () => {
+        const isMuted = muteToggle.textContent.includes('Ενεργοποίηση');
+        muteToggle.textContent = isMuted ? 'Απενεργοποίηση ήχου' : 'Ενεργοποίηση ήχου';
+        videoIframe.contentWindow.postMessage(JSON.stringify({
+            event: 'command',
+            func: isMuted ? 'unMute' : 'mute'
+        }), '*');
+    });
+
+    // Διαχείριση μετάφρασης Google
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({
+            pageLanguage: 'el',
+            includedLanguages: 'af,ar,bg,bn,bs,cs,da,de,el,en,es,et,eu,fa,fi,fr,ga,gl,he,hi,hr,hu,hy,id,is,it,ja,ka,km,ko,lo,lt,lv,mk,ml,ms,mt,my,nl,no,pl,pt,ro,ru,sk,sl,sr,sv,sw,ta,te,th,tl,tr,uk,ur,vi,zh-CN,zh-TW,zu',
+            layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+            autoDisplay: false
+        }, 'google_translate_element');
+    }
+
+    // Διαχείριση σφαλμάτων βίντεο
+    videoIframe.addEventListener('error', () => {
+        document.getElementById('video-error').style.display = 'block';
+    });
+
+    // Web Vitals
+    webVitals.getCLS((metric) => console.log('CLS:', metric.value));
+    webVitals.getFID((metric) => console.log('FID:', metric.value));
+    webVitals.getLCP((metric) => console.log('LCP:', metric.value));
+</script>
+
+<!-- Autres balises meta et liens pour temoignage client -->
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Καψάκια απώλειας βάρους Victory",
+    "description": "Φυσικά καψάκια για γρήγορη και αποτελεσματική απώλεια βάρους",
+    "brand": {
+        "@type": "Brand",
+        "name": "ClairvoyanceMedium"
+    },
+    "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "287",
+        "bestRating": "5",
+        "worstRating": "1"
+    },
+    "review": [
+        {
+            "@type": "Review",
+            "reviewRating": {
+                "@type": "Rating",
+                "ratingValue": "5",
+                "bestRating": "5"
+            },
+            "author": {
+                "@type": "Person",
+                "name": "Μαρία"
+            },
+            "datePublished": "2025-05-15",
+            "reviewBody": "Χαλασα 12 κιλά σε 3 μήνες χωρίς προσπάθεια! Τα καψάκια Victory είναι μαγικά!"
+        },
+        {
+            "@type": "Review",
+            "reviewRating": {
+                "@type": "Rating",
+                "ratingValue": "5",
+                "bestRating": "5"
+            },
+            "author": {
+                "@type": "Person",
+                "name": "Γιάννης"
+            },
+            "datePublished": "2025-04-22",
+            "reviewBody": "Αποτελεσματικά και χωρίς παρενέργειες. Συνιστώ ανεπιφύλακτα!"
+        }
+    ],
+    "offers": {
+        "@type": "Offer",
+        "url": "https://clairvoyancemedium.github.io/pos-na-adynatisete-grigora-kai-na-chasete-varos-oristika.github.io/",
+        "priceCurrency": "EUR",
+        "price": "49.90",
+        "priceValidUntil": "2070-12-31",
+        "itemCondition": "https://schema.org/NewCondition",
+        "availability": "https://schema.org/InStock",
+        "shippingDetails": {
+            "@type": "OfferShippingDetails",
+            "shippingRate": {
+                "@type": "MonetaryAmount",
+                "value": "0",
+                "currency": "EUR"
+            },
+            "shippingDestination": {
+                "@type": "DefinedRegion",
+                "addressCountry": "GR"
+            }
+        },
+        "hasMerchantReturnPolicy": {
+            "@type": "MerchantReturnPolicy",
+            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+            "merchantReturnDays": 30,
+            "returnMethod": "https://schema.org/ReturnByMail",
+            "applicableCountry": "GR"
+        }
+    },
+    "image": "https://clairvoyancemedium.github.io/pos-na-adynatisete-grigora-kai-na-chasete-varos-oristika.github.io/images/victory-product.jpg",
+    "audience": {
+        "@type": "PeopleAudience",
+        "suggestedGender": "Female",
+        "suggestedMinAge": 18
+    }
+}
+</script>
+</body>
+</html>
+
 
